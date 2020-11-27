@@ -16,6 +16,6 @@
 #
 
 deployment = {
-  'github.organisation': 'graknlabs',
+  'github.organisation': 'lolski',
   'github.repository': 'graql'
 }

@@ -21,7 +21,7 @@ config:
 build:
   quality:
     filter:
-      owner: graknlabs
+      owner: lolski
       branch: master
     build-analysis:
       machine: graknlabs-ubuntu-20.04
@@ -48,7 +48,7 @@ build:
         bazel test --config=rbe //java/... --test_output=errors
     deploy-maven-snapshot:
       filter:
-        owner: graknlabs
+        owner: lolski
         branch: master
       machine: graknlabs-ubuntu-20.04
       dependencies: [build, build-dependency, test-graql-java]
@@ -63,7 +63,7 @@ build:
         bazel run --define version=$(git rev-parse HEAD) //java:deploy-maven -- snapshot
     test-deployment-maven:
       filter:
-        owner: graknlabs
+        owner: lolski
         branch: master
       machine: graknlabs-ubuntu-20.04
       dependencies: [deploy-maven-snapshot]
@@ -73,12 +73,12 @@ build:
 
 release:
   filter:
-    owner: graknlabs
+    owner: lolski
     branch: master
-  validation:
-    validate-dependencies:
-      machine: graknlabs-ubuntu-20.04
-      script: bazel test //:release-validate-deps --test_output=streamed
+  # validation:
+  #   validate-dependencies:
+  #     machine: graknlabs-ubuntu-20.04
+  #     script: bazel test //:release-validate-deps --test_output=streamed
   deployment:
     deploy-github:
       machine: graknlabs-ubuntu-20.04
